@@ -11,7 +11,6 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   cols = floor(width / scl);
   rows = floor(height / scl);
-  // noLoop();
 }
 
 function draw() {
@@ -39,13 +38,3 @@ function draw() {
   zoff += 0.005;
   colZoff += 0.02;
 }
-
-// function keyTyped() {
-//   if (key === "a") {
-//     noLoop();
-//   }
-// }
-
-// function keyPressed() {
-//   loop();
-// }
