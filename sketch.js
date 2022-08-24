@@ -3,21 +3,21 @@ let zoff = 0;
 
 const inc = 0.15;
 const scl = 20;
-const numParticles = 100;
-const points = [];
+const offset = 1.1;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  const cnv = createCanvas(700, 700);
   cols = floor(width / scl);
   rows = floor(height / scl);
+  //   background(200);
 }
 
 function draw() {
   background(0);
   let yoff = 0;
-  for (let y = 0; y < rows; y++) {
+  for (let y = offset; y < rows; y++) {
     let xoff = 0;
-    for (let x = 0; x < cols; x++) {
+    for (let x = offset; x < cols; x++) {
       let noiseWave = noise(xoff, yoff, zoff);
 
       //angle
@@ -29,12 +29,12 @@ function draw() {
       let r = map(noiseWave, 0, 1, 240, 0);
       let g = map(noiseWave, 0, 1, 0, 255);
       let b = map(noiseWave, 0, 1, 255, 100);
-      let transparency = map(noiseWave, 0, 0.7, 50, 125);
+      let transparency = map(noiseWave, 0.3, 0.6, 50, 170);
 
       let color = [r, g, b, transparency];
 
       stroke(color);
-      strokeWeight(map(noiseWave, 0, 1, 1, 5));
+      strokeWeight(map(noiseWave, 0, 1, 0.2, 3.5));
       push();
       translate(x * scl, y * scl);
       rotate(v.heading());
@@ -49,11 +49,9 @@ function draw() {
 }
 
 function keyTyped() {
-  if (key === "a") {
+  if (key === "s") {
     noLoop();
+  } else if (key === "c") {
+    loop();
   }
-}
-
-function keyPressed() {
-  loop();
 }
